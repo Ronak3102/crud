@@ -1,0 +1,117 @@
+body{
+    background-color: #FF7777;
+    box-sizing: border-box;
+}
+form{
+    padding: 30px;
+}
+.container-fluid{
+    background-color: #F5C6A5;
+    width: 70%;
+    margin-top: 100px;
+}
+
+
+
+
+
+.left{
+    position: relative;
+    
+}
+.right{
+    position: relative;
+}
+.city{
+    position: relative;
+}
+.address{
+    position: relative;
+}
+.state{
+    position: relative;
+}
+.zip{
+    position: relative;
+}
+.left i{
+    position: absolute;
+    left: 395px;
+    top: 45px;
+    visibility: hidden;
+   
+}
+.right i{
+    position: absolute;
+    left: 395px;
+    top: 45px;
+    visibility: hidden;
+}
+.address i{
+    position: absolute;
+    left: 832px;
+    top: 45px;
+    visibility: hidden;
+}.state i{
+    position: absolute;
+    left: 255px;
+    top: 45px ;
+    visibility: hidden;
+}
+.zip i{
+    position: absolute;
+    left: 115px;
+    top: 45px;
+    visibility: hidden;
+   
+}
+.left small{
+    position: absolute;
+    left: 300px ;
+    visibility: hidden;
+}
+.right small{
+    position: absolute;
+    left: 300px ;
+    visibility: hidden;
+}
+.address small{
+    position: absolute;
+    left: 600px ;
+    visibility: hidden;
+}
+.state small{
+    position: absolute;
+    left: 150px ;
+    visibility: hidden;
+}
+.zip small{
+    position: absolute;
+    left: 30px ;
+    visibility: hidden;
+}
+
+
+.success input{
+    border: 2px solid #2ecc71;
+    
+}
+.error input{
+    border: 2px solid #e74c3c
+    
+}
+.success i.fa-check-circle{
+    color: #2ecc71;
+    visibility: visible;
+}
+.error i.fa-exclamation-circle{
+    color: #e74c3c;
+    visibility: visible;
+}
+.error small{
+    visibility: visible;
+    color: #e74c3c;
+}
+button{
+    margin-top: 2rem;
+}
