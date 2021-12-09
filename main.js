@@ -1,3 +1,16 @@
+//       if($query){
+// ?>
+//         <script>alert("submit successfully");</script>
+// <?php
+
+//       }else{
+// ?>      
+//         <script>alert("submit unsuccessful");</script>
+// <?php
+//       }
+
+
+
 const form = document.getElementById("form");
 const firstName= document.getElementById("firstname");
 const lastName= document.getElementById("lastname");
@@ -12,9 +25,9 @@ const zip= document.getElementById("zip");
 form.addEventListener('submit', (e)=>{
     e.preventDefault();
     checkInputs();
-
+    
 });
-// let firstNameValue = 0;
+
 function checkInputs(){
     const firstNameValue = firstName.value;
     const lastNameValue = lastName.value;
@@ -24,6 +37,8 @@ function checkInputs(){
     const cityValue = city.value;
     const stateValue = state.value;
     const zipValue = zip.value;
+
+
     if(firstNameValue === ''){
         setErrorForLeft(firstName,"can't be empty");
         
@@ -93,6 +108,7 @@ function setErrorForLeft(input,message){
     const small = parent.querySelector('small');
     small.innerHTML = message;
     parent.className ="col-md-6 left error";
+    
 
 }
 function setSuccessForLeft(input){
@@ -111,6 +127,7 @@ function setErrorForRight(input,message){
 function setSuccessForRight(input){
     const parent = input.parentElement;
     parent.className ="col-md-6 right success";
+    
 }
 
 
@@ -124,6 +141,7 @@ function setErrorForAddress(input,message){
 function setSuccessForAddress(input){
     const parent = input.parentElement;
     parent.className ="col-12 address success";
+    
 }
 
 function setErrorForState(input,message){
@@ -136,6 +154,7 @@ function setErrorForState(input,message){
 function setSuccessForState(input){
     const parent = input.parentElement;
     parent.className ="col-md-4 state success";
+    
 }
 
 
@@ -149,6 +168,7 @@ function setErrorForzip(input,message){
 function setSuccessForzip(input){
     const parent = input.parentElement;
     parent.className ="col-md-2 zip success";
+    
 }
 
 

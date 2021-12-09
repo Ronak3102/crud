@@ -19,78 +19,15 @@
 <body>
 
     <div class="container-fluid" >
-        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>"method="POST" class="row g-3" id="form">
+        <form action=""method="POST" class="row g-3" id="form">
             <div class="col-md-6 left">
-              <label for="firstname" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname">
-              
-              <small>Error Message</small>
-            </div>
-            <div class="col-md-6 right">
-              <label for="lastname" class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname">
-             
-              <small>Error Message</small>
-            </div>
-            <div class="col-md-6 left">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="Valid Email" name="email">
-              
-              <small>Error Message</small>
-            </div>
-            <div class="col-md-6 right">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Your Password" name ="password">
-             
-                <small>Error Message</small>
-              </div>
-            <div class="col-12 address">
-              <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor" name="address">
-            
-              <small>Error Message</small>
-            </div>
-            <div class="col-md-6 left">
-              <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" id="city" placeholder="Current City" name="city">
-             
-              <small>Error Message</small>
-            </div>
-            <div class="col-md-4 state">
-                <label for="inputstate" class="form-label">State</label>
-                <input type="text" class="form-control" id="state" placeholder="Current State" name="state">
-                
-                <small>Error Message</small>
-            </div>
-            <div class="col-md-2 zip">
-              <label for="inputZip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="Zip" name="zip">
-             
-              <small>Error Message</small>
-            </div>
-            <br><br>
-            <div class="col-md-2 zip">
-                
-            
-           
-           <button type="submit" name="submit" value="Register" class="btn btn-primary">Submit</button>
-       
-           <a href="check.php" class="btn btn-warning check">Check Data</a>
-            
-        </form>
 
-    </div>
-    <!-- <script src="main.js"></script> -->
-
-    
-</body>
-</html>
-<?php
+            <?php
 include 'dbcon.php';
-
-$selectquery = "select * from registration;";
+$id = $_GET['id'];
+$selectquery = "select * from registration where ID = $id;";
 $query = mysqli_query($con, $selectquery);
-
+$result = mysqli_fetch_assoc($query);
 if(isset($_POST['submit'])){
    
   $f_name = ($_POST['firstname']);
@@ -101,13 +38,73 @@ if(isset($_POST['submit'])){
   $city = ($_POST['city']);
   $state = ($_POST['state']);
   $zip = ($_POST['zip']);
+ 
 
 
-  $insertquery = "insert into registration(f_name, l_name, email, password, address, city, state, zip) values('$f_name', '$l_name', '$email', '$password', '$address', '$city', '$state', '$zip')"; 
-  $query = mysqli_query($con, $insertquery);
-
+$updatequery = "update registration set f_name = '$f_name', l_name = '$l_name', email = '$email', password = '$password', address = '$address', city = '$city', state = '$state', zip = '$zip' where ID = $id;"; 
+  $query = mysqli_query($con, $updatequery);
   header("Location: check.php"); 
   exit();
- 
 }
 ?>
+              <label for="firstname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname" value = "<?php echo $result['f_name'] ?>">
+              
+              <small>Error Message</small>
+            </div>
+            <div class="col-md-6 right">
+              <label for="lastname" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname" value = "<?php echo $result['l_name'] ?>">
+             
+              <small>Error Message</small>
+            </div>
+            <div class="col-md-6 left">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Valid Email" name="email" value = "<?php echo $result['email'] ?>">
+              
+              <small>Error Message</small>
+            </div>
+            <div class="col-md-6 right">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Your Password" name ="password" value = "<?php echo $result['password'] ?>">
+             
+                <small>Error Message</small>
+              </div>
+            <div class="col-12 address">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor" name="address" value = "<?php echo $result['address'] ?>">
+            
+              <small>Error Message</small>
+            </div>
+            <div class="col-md-6 left">
+              <label for="inputCity" class="form-label">City</label>
+              <input type="text" class="form-control" id="city" placeholder="Current City" name="city" value = "<?php echo $result['city'] ?>">
+             
+              <small>Error Message</small>
+            </div>
+            <div class="col-md-4 state">
+                <label for="inputstate" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" placeholder="Current State" name="state" value = "<?php echo $result['state'] ?>">
+                
+                <small>Error Message</small>
+            </div>
+            <div class="col-md-2 zip">
+              <label for="inputZip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="zip" placeholder="Zip" name="zip" value = "<?php echo $result['zip'] ?>">
+             
+              <small>Error Message</small>
+            </div>
+            <br><br>
+            <div class="col-md-2 zip">
+                
+            
+           
+           <button type="submit" name="submit" value="" class="btn btn-dark">Update</button>
+       
+           <button class="btn btn-warning check"><a href="check.php" >Check Data</a> </button>
+            
+        </form>
+
+    </div>
+    </body>
+</html>
