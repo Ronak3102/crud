@@ -1,16 +1,3 @@
-//       if($query){
-// ?>
-//         <script>alert("submit successfully");</script>
-// <?php
-
-//       }else{
-// ?>      
-//         <script>alert("submit unsuccessful");</script>
-// <?php
-//       }
-
-
-
 const form = document.getElementById("form");
 const firstName= document.getElementById("firstname");
 const lastName= document.getElementById("lastname");
@@ -28,147 +15,147 @@ form.addEventListener('submit', (e)=>{
     
 });
 
+function sendData(sRate, count){
+    
+    if(sRate === count){
+        document.getElementById("form").submit();
+    }
+}
+
+function success(){
+    
+    let formCon = document.getElementsByClassName("col-md-6");
+    var count = formCon.length - 1;
+    for(var i=0;i<formCon.length;i++){
+        if(formCon[i].className === "col-md-6 success"){
+            
+            var sRate = 0+i;
+            sendData(sRate, count);
+        } else{
+            
+            return false;
+            
+        }
+    }
+
+    
+}
+
 function checkInputs(){
-    const firstNameValue = firstName.value;
-    const lastNameValue = lastName.value;
-    const emailValue = email.value;
-    const passwordValue = password.value;
-    const addressValue = address.value;
-    const cityValue = city.value;
-    const stateValue = state.value;
-    const zipValue = zip.value;
+    const firstNameValue = firstName.value.trim();
+    const lastNameValue = lastName.value.trim();
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+    const addressValue = address.value.trim();
+    const cityValue = city.value.trim();
+    const stateValue = state.value.trim();
+    const zipValue = zip.value.trim();
 
-
+    // validate firstname
     if(firstNameValue === ''){
-        setErrorForLeft(firstName,"can't be empty");
+        setErrorFor(firstName,"can't be empty");
+       
+    }
+    else if(firstNameValue.length < 2){
         
+        setErrorFor(firstName,"minimum 2 characters");
     }
-    else{
-        setSuccessForLeft(firstName);    
+       else {
+        setSuccessFor(firstName);    
     }
+
+    // validate lastname
     if(lastNameValue === ''){
-        setErrorForRight(lastName,"can't be empty");
+        setErrorFor(lastName,"can't be empty");
         
+    } else if(lastNameValue.length < 2){
+
+        setErrorFor(lastName,"minimum 2 characters");
     }
     else{
-        setSuccessForRight(lastName);    
+        setSuccessFor(lastName);    
     }
+
+    // validate email
     if(emailValue === ''){
-        setErrorForLeft(email,"can't be empty");
+        setErrorFor(email,"can't be empty");
         
     }
     else{
-        setSuccessForLeft(email);    
+        setSuccessFor(email);    
     }
+
+    // validate password
     if(passwordValue === ''){
-        setErrorForRight(password,"can't be empty");
+        setErrorFor(password,"can't be empty");
         
+    } else if(passwordValue.length < 6){
+        setErrorFor(password,"minimum 6 characters");
     }
     else{
-        setSuccessForRight(password);    
+        setSuccessFor(password);    
     }
+
+
+    // validate address
     if(addressValue === ''){
-        setErrorForAddress(address,"can't be empty");
+        setErrorFor(address,"can't be empty");
         
     }
     else{
-        setSuccessForAddress(address);    
+        setSuccessFor(address);    
     }
+
+    // validate city
     if(cityValue === ''){
-        setErrorForLeft(city,"can't be empty");
+        setErrorFor(city,"can't be empty");
         
     }
     else{
-        setSuccessForLeft(city);    
+        setSuccessFor(city);    
     }
+
+    // validate state
     if(stateValue === ''){
-        setErrorForState(state,"can't be empty");
+        setErrorFor(state,"can't be empty");
         
     }
     else{
-        setSuccessForState(state);    
+        setSuccessFor(state);    
     }
+
+    // validate ZIP
     if(zipValue === ''){
-        setErrorForzip(zip,"can't be empty");
+        setErrorFor(zip,"can't be empty");
         
+    } else if(zipValue.length !== 6){
+        setErrorFor(zip,"should be 6 digit long");
     }
     else{
-        setSuccessForzip(zip);    
+        setSuccessFor(zip);    
     }
-    
-   
 
-
+    success();
     
 }
 
 
-function setErrorForLeft(input,message){
+function setErrorFor(input,message){
     const parent = input.parentElement;
     const small = parent.querySelector('small');
     small.innerHTML = message;
-    parent.className ="col-md-6 left error";
+    parent.className ="col-md-6 error";
     
 
 }
-function setSuccessForLeft(input){
+function setSuccessFor(input){
     const parent = input.parentElement;
-    parent.className ="col-md-6 left success";
+    parent.className ="col-md-6 success";
 }
 
 
-function setErrorForRight(input,message){
-    const parent = input.parentElement;
-    const small = parent.querySelector('small');
-    small.innerHTML = message;
-    parent.className ="col-md-6 right error";
-
-}
-function setSuccessForRight(input){
-    const parent = input.parentElement;
-    parent.className ="col-md-6 right success";
-    
-}
 
 
-function setErrorForAddress(input,message){
-    const parent = input.parentElement;
-    const small = parent.querySelector('small');
-    small.innerHTML = message;
-    parent.className ="col-12 address error";
 
-}
-function setSuccessForAddress(input){
-    const parent = input.parentElement;
-    parent.className ="col-12 address success";
-    
-}
-
-function setErrorForState(input,message){
-    const parent = input.parentElement;
-    const small = parent.querySelector('small');
-    small.innerHTML = message;
-    parent.className ="col-md-4 state error";
-
-}
-function setSuccessForState(input){
-    const parent = input.parentElement;
-    parent.className ="col-md-4 state success";
-    
-}
-
-
-function setErrorForzip(input,message){
-    const parent = input.parentElement;
-    const small = parent.querySelector('small');
-    small.innerHTML = message;
-    parent.className ="col-md-2 zip error";
-
-}
-function setSuccessForzip(input){
-    const parent = input.parentElement;
-    parent.className ="col-md-2 zip success";
-    
-}
 
 

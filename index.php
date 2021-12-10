@@ -14,73 +14,73 @@
 
     <!-- css -->
 
-    <link rel="stylesheet" href="styles.CSS">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container-fluid" >
         <form action="<?php echo htmlentities($_SERVER['PHP_SELF']) ?>"method="POST" class="row g-3" id="form">
-            <div class="col-md-6 left">
+            <div class="col-md-6">
               <label for="firstname" class="form-label">First Name</label>
               <input type="text" class="form-control" id="firstname" placeholder="First Name" name="firstname">
-              
               <small>Error Message</small>
             </div>
-            <div class="col-md-6 right">
+            <div class="col-md-6">
               <label for="lastname" class="form-label">Last Name</label>
               <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="lastname">
              
               <small>Error Message</small>
             </div>
-            <div class="col-md-6 left">
+            <div class="col-md-6">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" placeholder="Valid Email" name="email">
-              
               <small>Error Message</small>
             </div>
-            <div class="col-md-6 right">
+            <div class="col-md-6">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" placeholder="Your Password" name ="password">
              
                 <small>Error Message</small>
               </div>
-            <div class="col-12 address">
+            <div class="col-md-6">
               <label for="inputAddress" class="form-label">Address</label>
               <input type="text" class="form-control" id="address" placeholder="Apartment, studio, or floor" name="address">
             
               <small>Error Message</small>
             </div>
-            <div class="col-md-6 left">
+            <div class="col-md-6">
               <label for="inputCity" class="form-label">City</label>
               <input type="text" class="form-control" id="city" placeholder="Current City" name="city">
              
               <small>Error Message</small>
             </div>
-            <div class="col-md-4 state">
+            <div class="col-md-6">
                 <label for="inputstate" class="form-label">State</label>
                 <input type="text" class="form-control" id="state" placeholder="Current State" name="state">
                 
                 <small>Error Message</small>
             </div>
-            <div class="col-md-2 zip">
+            <div class="col-md-6">
               <label for="inputZip" class="form-label">Zip</label>
               <input type="text" class="form-control" id="zip" placeholder="Zip" name="zip">
              
               <small>Error Message</small>
             </div>
             <br><br>
-            <div class="col-md-2 zip">
-                
             
+                
+            <div class = "bottom">
+                <button type="submit" value="Register" class="btn btn-primary">Submit</button>
+          
+                <a href="check.php" class="btn btn-warning check">Check Data</a>
+            </div>
            
-           <button type="submit" name="submit" value="Register" class="btn btn-primary">Submit</button>
-       
-           <a href="check.php" class="btn btn-warning check">Check Data</a>
+           
             
         </form>
 
     </div>
-    <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
 
     
 </body>
@@ -91,7 +91,7 @@ include 'dbcon.php';
 $selectquery = "select * from registration;";
 $query = mysqli_query($con, $selectquery);
 
-if(isset($_POST['submit'])){
+if(!empty($_POST)){
    
   $f_name = ($_POST['firstname']);
   $l_name = ($_POST['lastname']);
