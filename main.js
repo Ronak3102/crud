@@ -18,7 +18,7 @@ form.addEventListener('submit', (e)=>{
 function sendData(sRate, count){
     
     if(sRate === count){
-        document.getElementById("form").submit();
+        form.submit();
     }
 }
 
